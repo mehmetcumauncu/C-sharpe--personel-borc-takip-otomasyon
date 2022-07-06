@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="muhasebemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DBborc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ad_soyad" Type="nchar" MaxLength="100" />
+          <Property Name="tel" Type="nchar" MaxLength="20" />
+          <Property Name="adres" Type="nchar" MaxLength="50" />
+          <Property Name="miktar" Type="int" />
+        </EntityType>
+        <EntityType Name="DBgider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="giderad" Type="nchar" MaxLength="20" />
+          <Property Name="gidertutar" Type="int" />
+          <Property Name="personel" Type="int" />
+          <Property Name="gidertarih" Type="date" />
+          <Property Name="gideracıklama" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DBkullanici">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciad" Type="nchar" MaxLength="20" />
+          <Property Name="sifre" Type="nchar" MaxLength="20" />
+          <Property Name="mail" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DBmusteri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adsoyad" Type="nchar" MaxLength="50" />
+          <Property Name="tc" Type="nchar" MaxLength="15" />
+          <Property Name="plaka" Type="nchar" MaxLength="10" />
+          <Property Name="belgerino" Type="nchar" MaxLength="10" />
+          <Property Name="iletisim" Type="nchar" MaxLength="10" />
+          <Property Name="personel" Type="int" />
+          <Property Name="urun" Type="int" />
+          <Property Name="baslangictarih" Type="date" />
+          <Property Name="bitistarih" Type="date" />
+          <Property Name="urunyuzde" Type="int" />
+          <Property Name="netprim" Type="int" />
+          <Property Name="brütprim" Type="int" />
+          <Property Name="kar" Type="int" />
+        </EntityType>
+        <EntityType Name="DBpersonel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelad" Type="nchar" MaxLength="10" />
+          <Property Name="personelprim" Type="int" />
+          <Property Name="personelmail" Type="nchar" MaxLength="50" />
+          <Property Name="personeliban" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DBurun">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunad" Type="nchar" MaxLength="10" />
+          <Property Name="urunprim" Type="int" />
+          <Property Name="urunyuzde" Type="int" />
+        </EntityType>
+        <Association Name="FK_DBgider_DBpersonel">
+          <End Role="DBpersonel" Type="Self.DBpersonel" Multiplicity="0..1" />
+          <End Role="DBgider" Type="Self.DBgider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBpersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBgider">
+              <PropertyRef Name="personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DBmusteri_DBpersonel">
+          <End Role="DBpersonel" Type="Self.DBpersonel" Multiplicity="0..1" />
+          <End Role="DBmusteri" Type="Self.DBmusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBpersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBmusteri">
+              <PropertyRef Name="personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DBmusteri_DBurun">
+          <End Role="DBurun" Type="Self.DBurun" Multiplicity="0..1" />
+          <End Role="DBmusteri" Type="Self.DBmusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBurun">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBmusteri">
+              <PropertyRef Name="urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="muhasebemModelStoreContainer">
+          <EntitySet Name="DBborc" EntityType="Self.DBborc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBgider" EntityType="Self.DBgider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBkullanici" EntityType="Self.DBkullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBmusteri" EntityType="Self.DBmusteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBpersonel" EntityType="Self.DBpersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBurun" EntityType="Self.DBurun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DBgider_DBpersonel" Association="Self.FK_DBgider_DBpersonel">
+            <End Role="DBpersonel" EntitySet="DBpersonel" />
+            <End Role="DBgider" EntitySet="DBgider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DBmusteri_DBpersonel" Association="Self.FK_DBmusteri_DBpersonel">
+            <End Role="DBpersonel" EntitySet="DBpersonel" />
+            <End Role="DBmusteri" EntitySet="DBmusteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DBmusteri_DBurun" Association="Self.FK_DBmusteri_DBurun">
+            <End Role="DBurun" EntitySet="DBurun" />
+            <End Role="DBmusteri" EntitySet="DBmusteri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="muhasebemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DBgider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="giderad" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="gidertutar" Type="Int32" />
+          <Property Name="personel" Type="Int32" />
+          <Property Name="gidertarih" Type="DateTime" Precision="0" />
+          <Property Name="gideracıklama" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DBpersonel" Relationship="muhasebemModel.FK_DBgider_DBpersonel" FromRole="DBgider" ToRole="DBpersonel" />
+        </EntityType>
+        <EntityType Name="DBkullanici">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciad" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DBmusteri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="tc" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="plaka" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="belgerino" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="iletisim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="personel" Type="Int32" />
+          <Property Name="urun" Type="Int32" />
+          <Property Name="baslangictarih" Type="DateTime" Precision="0" />
+          <Property Name="bitistarih" Type="DateTime" Precision="0" />
+          <Property Name="urunyuzde" Type="Int32" />
+          <Property Name="netprim" Type="Int32" />
+          <Property Name="brütprim" Type="Int32" />
+          <Property Name="kar" Type="Int32" />
+          <NavigationProperty Name="DBpersonel" Relationship="muhasebemModel.FK_DBmusteri_DBpersonel" FromRole="DBmusteri" ToRole="DBpersonel" />
+          <NavigationProperty Name="DBurun" Relationship="muhasebemModel.FK_DBmusteri_DBurun" FromRole="DBmusteri" ToRole="DBurun" />
+        </EntityType>
+        <EntityType Name="DBpersonel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="personelprim" Type="Int32" />
+          <Property Name="personelmail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="personeliban" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DBgider" Relationship="muhasebemModel.FK_DBgider_DBpersonel" FromRole="DBpersonel" ToRole="DBgider" />
+          <NavigationProperty Name="DBmusteri" Relationship="muhasebemModel.FK_DBmusteri_DBpersonel" FromRole="DBpersonel" ToRole="DBmusteri" />
+        </EntityType>
+        <EntityType Name="DBurun">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="urunprim" Type="Int32" />
+          <Property Name="urunyuzde" Type="Int32" />
+          <NavigationProperty Name="DBmusteri" Relationship="muhasebemModel.FK_DBmusteri_DBurun" FromRole="DBurun" ToRole="DBmusteri" />
+        </EntityType>
+        <EntityContainer Name="muhasebemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DBgider" EntityType="Self.DBgider" />
+          <EntitySet Name="DBkullanici" EntityType="Self.DBkullanici" />
+          <EntitySet Name="DBmusteri" EntityType="Self.DBmusteri" />
+          <EntitySet Name="DBpersonel" EntityType="Self.DBpersonel" />
+          <EntitySet Name="DBurun" EntityType="Self.DBurun" />
+          <AssociationSet Name="FK_DBgider_DBpersonel" Association="muhasebemModel.FK_DBgider_DBpersonel">
+            <End Role="DBpersonel" EntitySet="DBpersonel" />
+            <End Role="DBgider" EntitySet="DBgider" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DBmusteri_DBpersonel" Association="muhasebemModel.FK_DBmusteri_DBpersonel">
+            <End Role="DBpersonel" EntitySet="DBpersonel" />
+            <End Role="DBmusteri" EntitySet="DBmusteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DBmusteri_DBurun" Association="muhasebemModel.FK_DBmusteri_DBurun">
+            <End Role="DBurun" EntitySet="DBurun" />
+            <End Role="DBmusteri" EntitySet="DBmusteri" />
+          </AssociationSet>
+          <EntitySet Name="DBborc" EntityType="muhasebemModel.DBborc" />
+        </EntityContainer>
+        <Association Name="FK_DBgider_DBpersonel">
+          <End Type="muhasebemModel.DBpersonel" Role="DBpersonel" Multiplicity="0..1" />
+          <End Type="muhasebemModel.DBgider" Role="DBgider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBpersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBgider">
+              <PropertyRef Name="personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DBmusteri_DBpersonel">
+          <End Type="muhasebemModel.DBpersonel" Role="DBpersonel" Multiplicity="0..1" />
+          <End Type="muhasebemModel.DBmusteri" Role="DBmusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBpersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBmusteri">
+              <PropertyRef Name="personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DBmusteri_DBurun">
+          <End Type="muhasebemModel.DBurun" Role="DBurun" Multiplicity="0..1" />
+          <End Type="muhasebemModel.DBmusteri" Role="DBmusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBurun">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DBmusteri">
+              <PropertyRef Name="urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DBborc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ad_soyad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="miktar" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="muhasebemModelStoreContainer" CdmEntityContainer="muhasebemEntities">
+          <EntitySetMapping Name="DBgider">
+            <EntityTypeMapping TypeName="muhasebemModel.DBgider">
+              <MappingFragment StoreEntitySet="DBgider">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="giderad" ColumnName="giderad" />
+                <ScalarProperty Name="gidertutar" ColumnName="gidertutar" />
+                <ScalarProperty Name="personel" ColumnName="personel" />
+                <ScalarProperty Name="gidertarih" ColumnName="gidertarih" />
+                <ScalarProperty Name="gideracıklama" ColumnName="gideracıklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBkullanici">
+            <EntityTypeMapping TypeName="muhasebemModel.DBkullanici">
+              <MappingFragment StoreEntitySet="DBkullanici">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kullaniciad" ColumnName="kullaniciad" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBmusteri">
+            <EntityTypeMapping TypeName="muhasebemModel.DBmusteri">
+              <MappingFragment StoreEntitySet="DBmusteri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="tc" ColumnName="tc" />
+                <ScalarProperty Name="plaka" ColumnName="plaka" />
+                <ScalarProperty Name="belgerino" ColumnName="belgerino" />
+                <ScalarProperty Name="iletisim" ColumnName="iletisim" />
+                <ScalarProperty Name="personel" ColumnName="personel" />
+                <ScalarProperty Name="urun" ColumnName="urun" />
+                <ScalarProperty Name="baslangictarih" ColumnName="baslangictarih" />
+                <ScalarProperty Name="bitistarih" ColumnName="bitistarih" />
+                <ScalarProperty Name="urunyuzde" ColumnName="urunyuzde" />
+                <ScalarProperty Name="netprim" ColumnName="netprim" />
+                <ScalarProperty Name="brütprim" ColumnName="brütprim" />
+                <ScalarProperty Name="kar" ColumnName="kar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBpersonel">
+            <EntityTypeMapping TypeName="muhasebemModel.DBpersonel">
+              <MappingFragment StoreEntitySet="DBpersonel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="personelad" ColumnName="personelad" />
+                <ScalarProperty Name="personelprim" ColumnName="personelprim" />
+                <ScalarProperty Name="personelmail" ColumnName="personelmail" />
+                <ScalarProperty Name="personeliban" ColumnName="personeliban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBurun">
+            <EntityTypeMapping TypeName="muhasebemModel.DBurun">
+              <MappingFragment StoreEntitySet="DBurun">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="urunad" ColumnName="urunad" />
+                <ScalarProperty Name="urunprim" ColumnName="urunprim" />
+                <ScalarProperty Name="urunyuzde" ColumnName="urunyuzde" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBborc">
+            <EntityTypeMapping TypeName="muhasebemModel.DBborc">
+              <MappingFragment StoreEntitySet="DBborc">
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="ad_soyad" ColumnName="ad_soyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

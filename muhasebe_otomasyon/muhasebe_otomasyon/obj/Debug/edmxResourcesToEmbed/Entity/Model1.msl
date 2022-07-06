@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="muhasebemModelStoreContainer" CdmEntityContainer="muhasebemEntities">
+    <EntitySetMapping Name="DBgider">
+      <EntityTypeMapping TypeName="muhasebemModel.DBgider">
+        <MappingFragment StoreEntitySet="DBgider">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="giderad" ColumnName="giderad" />
+          <ScalarProperty Name="gidertutar" ColumnName="gidertutar" />
+          <ScalarProperty Name="personel" ColumnName="personel" />
+          <ScalarProperty Name="gidertarih" ColumnName="gidertarih" />
+          <ScalarProperty Name="gideracıklama" ColumnName="gideracıklama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBkullanici">
+      <EntityTypeMapping TypeName="muhasebemModel.DBkullanici">
+        <MappingFragment StoreEntitySet="DBkullanici">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="kullaniciad" ColumnName="kullaniciad" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBmusteri">
+      <EntityTypeMapping TypeName="muhasebemModel.DBmusteri">
+        <MappingFragment StoreEntitySet="DBmusteri">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+          <ScalarProperty Name="tc" ColumnName="tc" />
+          <ScalarProperty Name="plaka" ColumnName="plaka" />
+          <ScalarProperty Name="belgerino" ColumnName="belgerino" />
+          <ScalarProperty Name="iletisim" ColumnName="iletisim" />
+          <ScalarProperty Name="personel" ColumnName="personel" />
+          <ScalarProperty Name="urun" ColumnName="urun" />
+          <ScalarProperty Name="baslangictarih" ColumnName="baslangictarih" />
+          <ScalarProperty Name="bitistarih" ColumnName="bitistarih" />
+          <ScalarProperty Name="urunyuzde" ColumnName="urunyuzde" />
+          <ScalarProperty Name="netprim" ColumnName="netprim" />
+          <ScalarProperty Name="brütprim" ColumnName="brütprim" />
+          <ScalarProperty Name="kar" ColumnName="kar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBpersonel">
+      <EntityTypeMapping TypeName="muhasebemModel.DBpersonel">
+        <MappingFragment StoreEntitySet="DBpersonel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="personelad" ColumnName="personelad" />
+          <ScalarProperty Name="personelprim" ColumnName="personelprim" />
+          <ScalarProperty Name="personelmail" ColumnName="personelmail" />
+          <ScalarProperty Name="personeliban" ColumnName="personeliban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBurun">
+      <EntityTypeMapping TypeName="muhasebemModel.DBurun">
+        <MappingFragment StoreEntitySet="DBurun">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="urunad" ColumnName="urunad" />
+          <ScalarProperty Name="urunprim" ColumnName="urunprim" />
+          <ScalarProperty Name="urunyuzde" ColumnName="urunyuzde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DBborc">
+      <EntityTypeMapping TypeName="muhasebemModel.DBborc">
+        <MappingFragment StoreEntitySet="DBborc">
+          <ScalarProperty Name="miktar" ColumnName="miktar" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="ad_soyad" ColumnName="ad_soyad" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

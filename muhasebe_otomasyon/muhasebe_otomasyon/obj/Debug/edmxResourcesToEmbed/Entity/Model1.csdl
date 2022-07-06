@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="muhasebemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DBgider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="giderad" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="gidertutar" Type="Int32" />
+    <Property Name="personel" Type="Int32" />
+    <Property Name="gidertarih" Type="DateTime" Precision="0" />
+    <Property Name="gideracıklama" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="DBpersonel" Relationship="muhasebemModel.FK_DBgider_DBpersonel" FromRole="DBgider" ToRole="DBpersonel" />
+  </EntityType>
+  <EntityType Name="DBkullanici">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciad" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DBmusteri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="tc" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="plaka" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="belgerino" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="iletisim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="personel" Type="Int32" />
+    <Property Name="urun" Type="Int32" />
+    <Property Name="baslangictarih" Type="DateTime" Precision="0" />
+    <Property Name="bitistarih" Type="DateTime" Precision="0" />
+    <Property Name="urunyuzde" Type="Int32" />
+    <Property Name="netprim" Type="Int32" />
+    <Property Name="brütprim" Type="Int32" />
+    <Property Name="kar" Type="Int32" />
+    <NavigationProperty Name="DBpersonel" Relationship="muhasebemModel.FK_DBmusteri_DBpersonel" FromRole="DBmusteri" ToRole="DBpersonel" />
+    <NavigationProperty Name="DBurun" Relationship="muhasebemModel.FK_DBmusteri_DBurun" FromRole="DBmusteri" ToRole="DBurun" />
+  </EntityType>
+  <EntityType Name="DBpersonel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="personelad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="personelprim" Type="Int32" />
+    <Property Name="personelmail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="personeliban" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="DBgider" Relationship="muhasebemModel.FK_DBgider_DBpersonel" FromRole="DBpersonel" ToRole="DBgider" />
+    <NavigationProperty Name="DBmusteri" Relationship="muhasebemModel.FK_DBmusteri_DBpersonel" FromRole="DBpersonel" ToRole="DBmusteri" />
+  </EntityType>
+  <EntityType Name="DBurun">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urunad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="urunprim" Type="Int32" />
+    <Property Name="urunyuzde" Type="Int32" />
+    <NavigationProperty Name="DBmusteri" Relationship="muhasebemModel.FK_DBmusteri_DBurun" FromRole="DBurun" ToRole="DBmusteri" />
+  </EntityType>
+  <EntityContainer Name="muhasebemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DBgider" EntityType="Self.DBgider" />
+    <EntitySet Name="DBkullanici" EntityType="Self.DBkullanici" />
+    <EntitySet Name="DBmusteri" EntityType="Self.DBmusteri" />
+    <EntitySet Name="DBpersonel" EntityType="Self.DBpersonel" />
+    <EntitySet Name="DBurun" EntityType="Self.DBurun" />
+    <AssociationSet Name="FK_DBgider_DBpersonel" Association="muhasebemModel.FK_DBgider_DBpersonel">
+      <End Role="DBpersonel" EntitySet="DBpersonel" />
+      <End Role="DBgider" EntitySet="DBgider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DBmusteri_DBpersonel" Association="muhasebemModel.FK_DBmusteri_DBpersonel">
+      <End Role="DBpersonel" EntitySet="DBpersonel" />
+      <End Role="DBmusteri" EntitySet="DBmusteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DBmusteri_DBurun" Association="muhasebemModel.FK_DBmusteri_DBurun">
+      <End Role="DBurun" EntitySet="DBurun" />
+      <End Role="DBmusteri" EntitySet="DBmusteri" />
+    </AssociationSet>
+    <EntitySet Name="DBborc" EntityType="muhasebemModel.DBborc" />
+  </EntityContainer>
+  <Association Name="FK_DBgider_DBpersonel">
+    <End Type="muhasebemModel.DBpersonel" Role="DBpersonel" Multiplicity="0..1" />
+    <End Type="muhasebemModel.DBgider" Role="DBgider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBpersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBgider">
+        <PropertyRef Name="personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DBmusteri_DBpersonel">
+    <End Type="muhasebemModel.DBpersonel" Role="DBpersonel" Multiplicity="0..1" />
+    <End Type="muhasebemModel.DBmusteri" Role="DBmusteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBpersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBmusteri">
+        <PropertyRef Name="personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DBmusteri_DBurun">
+    <End Type="muhasebemModel.DBurun" Role="DBurun" Multiplicity="0..1" />
+    <End Type="muhasebemModel.DBmusteri" Role="DBmusteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBurun">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBmusteri">
+        <PropertyRef Name="urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DBborc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="ad_soyad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="adres" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="miktar" Type="Int32" />
+  </EntityType>
+</Schema>

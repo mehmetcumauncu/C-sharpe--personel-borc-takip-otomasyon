@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="muhasebemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DBborc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ad_soyad" Type="nchar" MaxLength="100" />
+    <Property Name="tel" Type="nchar" MaxLength="20" />
+    <Property Name="adres" Type="nchar" MaxLength="50" />
+    <Property Name="miktar" Type="int" />
+  </EntityType>
+  <EntityType Name="DBgider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="giderad" Type="nchar" MaxLength="20" />
+    <Property Name="gidertutar" Type="int" />
+    <Property Name="personel" Type="int" />
+    <Property Name="gidertarih" Type="date" />
+    <Property Name="gideracıklama" Type="nchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DBkullanici">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciad" Type="nchar" MaxLength="20" />
+    <Property Name="sifre" Type="nchar" MaxLength="20" />
+    <Property Name="mail" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DBmusteri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adsoyad" Type="nchar" MaxLength="50" />
+    <Property Name="tc" Type="nchar" MaxLength="15" />
+    <Property Name="plaka" Type="nchar" MaxLength="10" />
+    <Property Name="belgerino" Type="nchar" MaxLength="10" />
+    <Property Name="iletisim" Type="nchar" MaxLength="10" />
+    <Property Name="personel" Type="int" />
+    <Property Name="urun" Type="int" />
+    <Property Name="baslangictarih" Type="date" />
+    <Property Name="bitistarih" Type="date" />
+    <Property Name="urunyuzde" Type="int" />
+    <Property Name="netprim" Type="int" />
+    <Property Name="brütprim" Type="int" />
+    <Property Name="kar" Type="int" />
+  </EntityType>
+  <EntityType Name="DBpersonel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personelad" Type="nchar" MaxLength="10" />
+    <Property Name="personelprim" Type="int" />
+    <Property Name="personelmail" Type="nchar" MaxLength="50" />
+    <Property Name="personeliban" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="DBurun">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urunad" Type="nchar" MaxLength="10" />
+    <Property Name="urunprim" Type="int" />
+    <Property Name="urunyuzde" Type="int" />
+  </EntityType>
+  <Association Name="FK_DBgider_DBpersonel">
+    <End Role="DBpersonel" Type="Self.DBpersonel" Multiplicity="0..1" />
+    <End Role="DBgider" Type="Self.DBgider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBpersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBgider">
+        <PropertyRef Name="personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DBmusteri_DBpersonel">
+    <End Role="DBpersonel" Type="Self.DBpersonel" Multiplicity="0..1" />
+    <End Role="DBmusteri" Type="Self.DBmusteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBpersonel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBmusteri">
+        <PropertyRef Name="personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DBmusteri_DBurun">
+    <End Role="DBurun" Type="Self.DBurun" Multiplicity="0..1" />
+    <End Role="DBmusteri" Type="Self.DBmusteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DBurun">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DBmusteri">
+        <PropertyRef Name="urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="muhasebemModelStoreContainer">
+    <EntitySet Name="DBborc" EntityType="Self.DBborc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBgider" EntityType="Self.DBgider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBkullanici" EntityType="Self.DBkullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBmusteri" EntityType="Self.DBmusteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBpersonel" EntityType="Self.DBpersonel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBurun" EntityType="Self.DBurun" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DBgider_DBpersonel" Association="Self.FK_DBgider_DBpersonel">
+      <End Role="DBpersonel" EntitySet="DBpersonel" />
+      <End Role="DBgider" EntitySet="DBgider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DBmusteri_DBpersonel" Association="Self.FK_DBmusteri_DBpersonel">
+      <End Role="DBpersonel" EntitySet="DBpersonel" />
+      <End Role="DBmusteri" EntitySet="DBmusteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DBmusteri_DBurun" Association="Self.FK_DBmusteri_DBurun">
+      <End Role="DBurun" EntitySet="DBurun" />
+      <End Role="DBmusteri" EntitySet="DBmusteri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

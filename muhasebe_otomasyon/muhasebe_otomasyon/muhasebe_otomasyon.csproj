@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8D624C8-9599-4336-B62B-1C022B198C81}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>muhasebe_otomasyon</RootNamespace>
+    <AssemblyName>muhasebe_otomasyon</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Wizard, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\DBborc.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DBgider.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DBkullanici.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DBmusteri.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DBpersonel.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DBurun.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\anasayfa\aramamotoru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\anasayfa\aramamotoru.Designer.cs">
+      <DependentUpon>aramamotoru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\anasayfa\internethiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\anasayfa\internethiz.Designer.cs">
+      <DependentUpon>internethiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\anasayfa\mailgonder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\anasayfa\mailgonder.Designer.cs">
+      <DependentUpon>mailgonder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\anasayfa\takvim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\anasayfa\takvim.Designer.cs">
+      <DependentUpon>takvim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\anasayfa\youtube.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\anasayfa\youtube.Designer.cs">
+      <DependentUpon>youtube.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\borc\borcekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\borc\borcekle.Designer.cs">
+      <DependentUpon>borcekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\borc\borclar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\borc\borclar.Designer.cs">
+      <DependentUpon>borclar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\borc\borclukisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\borc\borclukisi.Designer.cs">
+      <DependentUpon>borclukisi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\borc\islemyap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\borc\islemyap.Designer.cs">
+      <DependentUpon>islemyap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\gider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\gider.Designer.cs">
+      <DependentUpon>gider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\giderekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\giderekle.Designer.cs">
+      <DependentUpon>giderekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\giderguncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\giderguncelle.Designer.cs">
+      <DependentUpon>giderguncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\gidersil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\isyerigiderleri\gidersil.Designer.cs">
+      <DependentUpon>gidersil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\personel\personelekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\personel\personelekle.Designer.cs">
+      <DependentUpon>personelekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\personel\personel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\personel\personel.Designer.cs">
+      <DependentUpon>personel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\personel\personelguncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\personel\personelguncelle.Designer.cs">
+      <DependentUpon>personelguncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\personel\personelistatistik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\personel\personelistatistik.Designer.cs">
+      <DependentUpon>personelistatistik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\personel\personelsil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\personel\personelsil.Designer.cs">
+      <DependentUpon>personelsil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\police\policeara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\police\policeara.Designer.cs">
+      <DependentUpon>policeara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\police\policeekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\police\policeekle.Designer.cs">
+      <DependentUpon>policeekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\police\policeler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\police\policeler.Designer.cs">
+      <DependentUpon>policeler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\sifreislemler\kullaniciguncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\sifreislemler\kullaniciguncelle.Designer.cs">
+      <DependentUpon>kullaniciguncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\sifreislemler\kullanicilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\sifreislemler\kullanicilar.Designer.cs">
+      <DependentUpon>kullanicilar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\urun\urunekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\urun\urunekle.Designer.cs">
+      <DependentUpon>urunekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\urun\urunguncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\urun\urunguncelle.Designer.cs">
+      <DependentUpon>urunguncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\urun\urunistatistik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\urun\urunistatistik.Designer.cs">
+      <DependentUpon>urunistatistik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\urun\urunler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\urun\urunler.Designer.cs">
+      <DependentUpon>urunler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formlar\urun\urunsil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formlar\urun\urunsil.Designer.cs">
+      <DependentUpon>urunsil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="giris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="giris.Designer.cs">
+      <DependentUpon>giris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="guvenlik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="guvenlik.Designer.cs">
+      <DependentUpon>guvenlik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kaydol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kaydol.Designer.cs">
+      <DependentUpon>kaydol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\anasayfa\aramamotoru.resx">
+      <DependentUpon>aramamotoru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\anasayfa\internethiz.resx">
+      <DependentUpon>internethiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\anasayfa\mailgonder.resx">
+      <DependentUpon>mailgonder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\anasayfa\takvim.resx">
+      <DependentUpon>takvim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\anasayfa\youtube.resx">
+      <DependentUpon>youtube.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\borc\borcekle.resx">
+      <DependentUpon>borcekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\borc\borclar.resx">
+      <DependentUpon>borclar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\borc\borclukisi.resx">
+      <DependentUpon>borclukisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\borc\islemyap.resx">
+      <DependentUpon>islemyap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\isyerigiderleri\gider.resx">
+      <DependentUpon>gider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\isyerigiderleri\giderekle.resx">
+      <DependentUpon>giderekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\isyerigiderleri\giderguncelle.resx">
+      <DependentUpon>giderguncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\isyerigiderleri\gidersil.resx">
+      <DependentUpon>gidersil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\personel\personel.resx">
+      <DependentUpon>personel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\personel\personelekle.resx">
+      <DependentUpon>personelekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\personel\personelguncelle.resx">
+      <DependentUpon>personelguncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\personel\personelistatistik.resx">
+      <DependentUpon>personelistatistik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\personel\personelsil.resx">
+      <DependentUpon>personelsil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\police\policeara.resx">
+      <DependentUpon>policeara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\police\policeekle.resx">
+      <DependentUpon>policeekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\police\policeler.resx">
+      <DependentUpon>policeler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\sifreislemler\kullaniciguncelle.resx">
+      <DependentUpon>kullaniciguncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\sifreislemler\kullanicilar.resx">
+      <DependentUpon>kullanicilar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\urun\urunekle.resx">
+      <DependentUpon>urunekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\urun\urunguncelle.resx">
+      <DependentUpon>urunguncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\urun\urunistatistik.resx">
+      <DependentUpon>urunistatistik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\urun\urunler.resx">
+      <DependentUpon>urunler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formlar\urun\urunsil.resx">
+      <DependentUpon>urunsil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="giris.resx">
+      <DependentUpon>giris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="guvenlik.resx">
+      <DependentUpon>guvenlik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kaydol.resx">
+      <DependentUpon>kaydol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Entity\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Entity\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\photo5809784300202211681.jpg" />
+    <None Include="Resources\pngegg %284%29.png" />
+    <None Include="Resources\pngegg %283%29.png" />
+    <None Include="Resources\pngegg %282%29.png" />
+    <None Include="Resources\pngegg %281%29.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
